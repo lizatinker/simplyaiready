@@ -66,7 +66,13 @@ def footer():
 </footer>"""
 
 
-def page(title, body, path, desc, og_type="website", extra_head=""):
+PRIVATE_PAGES = {
+    # unlisted pages: noindex, not in the sitemap
+    "it-guide.html": ("quick-check/it-guide/", "Quick Check: guide for your IT person", "How to export the three Microsoft 365 reports for your AI Ready Quick Check."),
+}
+
+
+def page(title, body, path, desc, og_type="website", extra_head="", robots="index, follow, max-image-preview:large"):
     t = esc(f"{title} · {SITE['name']}" if title else f"{SITE['name']} · Copilot readiness for SharePoint, Teams and OneDrive")
     url = f"{SITE['url']}/{path}"
     return f"""<!DOCTYPE html>
@@ -75,7 +81,7 @@ def page(title, body, path, desc, og_type="website", extra_head=""):
 <title>{t}</title>
 <meta name="description" content="{esc(desc)}">
 <link rel="canonical" href="{url}">
-<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="robots" content="{robots}">
 <meta property="og:title" content="{t}"><meta property="og:description" content="{esc(desc)}">
 <meta property="og:url" content="{url}"><meta property="og:type" content="{og_type}"><meta property="og:site_name" content="{SITE['name']}">
 <link rel="stylesheet" href="/static/style.css">
@@ -172,6 +178,9 @@ def main():
         body = open(os.path.join(ROOT, "pages", fn), encoding="utf-8").read()
         write(path + "index.html", page(title, body, path, desc))
         urls.append(path)
+    for fn, (path, title, desc) in PRIVATE_PAGES.items():
+        body = open(os.path.join(ROOT, "pages", fn), encoding="utf-8").read()
+        write(path + "index.html", page(title, body, path, desc, robots="noindex, nofollow"))
     posts = load_posts()
     for p in posts:
         write(f"blog/{p['slug']}/index.html", post_page(p))
