@@ -29,6 +29,7 @@ PAGES = {
     # file in pages/: (output path, title, description)
     "index.html": ("", "", SITE["description"]),
     "assessment.html": ("assessment/", "Free AI Ready Assessment", "30 questions, about 12 minutes. Get your Copilot readiness score for SharePoint, Teams and OneDrive, your biggest risks, five quick wins and the right next step."),
+    "packages.html": ("packages/", "Packages and pricing", "AI Ready Snapshot, Blueprint and Blueprint Plus: fixed-price Copilot readiness packages for SharePoint, Teams and OneDrive, plus build and support plans."),
     "newsletter.html": ("newsletter/", "The SharePoint Edit – weekly newsletter", "One email a week from Liza Tinker, Microsoft MVP: what changed in SharePoint, Teams, OneDrive and Copilot, and one thing worth fixing."),
 }
 
@@ -46,7 +47,7 @@ def header():
 </a>
 <nav aria-label="Main" style="display:flex;flex-wrap:wrap;gap:8px 28px;align-items:center;font-size:15px">
 <a href="/#how" style="text-decoration:none">How it works</a>
-<a href="/#packages" style="text-decoration:none">Packages</a>
+<a href="/packages/" style="text-decoration:none">Packages</a>
 <a href="/blog/" style="text-decoration:none">Blog</a>
 <a href="/newsletter/" style="text-decoration:none">Newsletter</a>
 <a href="/assessment/" style="text-decoration:none;background:#0d1b3e;color:#ffffff;padding:12px 20px;font-weight:600;min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center">Take the assessment</a>
