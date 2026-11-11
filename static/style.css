@@ -35,3 +35,4 @@ img{max-width:100%;display:block}
 .cta p{color:#c9d1e3}
 .cta .btn{background:#f0c808;color:#0d1b3e}
 .cta .btn.ghost{background:transparent;color:#fff;border-color:#c9d1e3}
+.newsletter-box{max-width:820px;margin:-40px auto 72px;background:#fff;border:1px solid #d9dce3;padding:32px}

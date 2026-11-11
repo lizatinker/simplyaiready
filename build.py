@@ -137,6 +137,8 @@ def post_page(p):
 {('<p class="excerpt">' + esc(p.get('excerpt')) + '</p>') if p.get('excerpt') else ''}
 <div class="prose">{p['html']}</div>
 {CTA}
+<aside class="newsletter-box"><p class="eyebrow">THE SHAREPOINT EDIT</p><p class="cta-title">Get one practical fix every week</p>
+<script async data-uid="f8a3a7b1d4" src="https://simply-sharepoint.kit.com/f8a3a7b1d4/index.js"></script></aside>
 </article>"""
     return page(p.get("title", ""), body, f"blog/{p['slug']}/", p.get("excerpt") or SITE["description"], "article",
                 f'<script type="application/ld+json">{ld}</script>')
