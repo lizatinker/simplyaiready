@@ -29,7 +29,7 @@ PAGES = {
     # file in pages/: (output path, title, description)
     "index.html": ("", "", SITE["description"]),
     "assessment.html": ("assessment/", "Free AI Ready Assessment", "30 questions, about 12 minutes. Get your Copilot readiness score for SharePoint, Teams and OneDrive, your biggest risks, five quick wins and the right next step."),
-    "packages.html": ("packages/", "Packages and pricing", "AI Ready Snapshot, Blueprint and Blueprint Plus: fixed-price Copilot readiness packages for SharePoint, Teams and OneDrive, plus build and support plans."),
+    "packages.html": ("packages/", "Packages and pricing", "Start with the $890 AI Ready Quick Check, then a Discovery and information architecture for SharePoint, Teams and OneDrive, plus build and support options."),
     "newsletter.html": ("newsletter/", "The SharePoint Edit – weekly newsletter", "One email a week from Liza Tinker, Microsoft MVP: what changed in SharePoint, Teams, OneDrive and Copilot, and one thing worth fixing."),
 }
 
