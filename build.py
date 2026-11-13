@@ -21,7 +21,7 @@ SITE = {
 }
 ASSESSMENT_URL = "/assessment/"
 OG_IMAGE = "/images/simply-ai-ready-share.png"   # 1200 x 630 social share image
-GOOGLE_VERIFICATION = ""   # paste the content value from Google Search Console's HTML tag here
+GOOGLE_VERIFICATION = "CPKEZTdYPEKTMOSe50Vhnf97URdG1P894OnKY5y7Geo"   # paste the content value from Google Search Console's HTML tag here
 ROOT = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(ROOT, "docs")
 DRAFTS = "--drafts" in sys.argv
