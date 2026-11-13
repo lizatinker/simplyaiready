@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-AU"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metadata vs folders in SharePoint: what Copilot actually needs · Simply AI Ready</title>
+<meta name="description" content="Folders tell Copilot where a file is. Metadata tells it what the file is. Here is why that difference decides the quality of your Copilot answers, and the four columns to start with.">
+<link rel="canonical" href="https://simplyaiready.com/blog/sharepoint-metadata-vs-folders-copilot/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:title" content="Metadata vs folders in SharePoint: what Copilot actually needs · Simply AI Ready"><meta property="og:description" content="Folders tell Copilot where a file is. Metadata tells it what the file is. Here is why that difference decides the quality of your Copilot answers, and the four columns to start with.">
+<meta property="og:url" content="https://simplyaiready.com/blog/sharepoint-metadata-vs-folders-copilot/"><meta property="og:type" content="article"><meta property="og:site_name" content="Simply AI Ready">
+<link rel="stylesheet" href="/static/style.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Metadata vs folders in SharePoint: what Copilot actually needs", "description": "Folders tell Copilot where a file is. Metadata tells it what the file is. Here is why that difference decides the quality of your Copilot answers, and the four columns to start with.", "datePublished": "2026-11-14", "author": {"@type": "Person", "name": "Liza Tinker"}, "publisher": {"@type": "Organization", "name": "Simply AI Ready"}, "mainEntityOfPage": "https://simplyaiready.com/blog/sharepoint-metadata-vs-folders-copilot/", "keywords": "SharePoint metadata vs folders, SharePoint metadata Copilot, SharePoint information architecture, SharePoint columns best practice, term store, there is no AI without IA"}</script>
+</head><body>
+<header style="background:#ffffff;border-bottom:4px solid #ff0876">
+<div style="max-width:1200px;margin:0 auto;padding:20px 24px;display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between">
+<a href="/" style="text-decoration:none;display:flex;flex-direction:column;gap:2px">
+<span style="font-family:'Oswald','Arial Narrow',sans-serif;font-weight:500;font-size:26px;letter-spacing:1px;color:#0d1b3e">SIMPLY AI READY</span>
+<span style="font-size:12px;color:#41515a">with Liza Tinker, Microsoft MVP</span>
+</a>
+<nav aria-label="Main" style="display:flex;flex-wrap:wrap;gap:8px 28px;align-items:center;font-size:15px">
+<a href="/#how" style="text-decoration:none">How it works</a>
+<a href="/packages/" style="text-decoration:none">Packages</a>
+<a href="/blog/" style="text-decoration:none">Blog</a>
+<a href="/newsletter/" style="text-decoration:none">Newsletter</a>
+<a href="/assessment/" style="text-decoration:none;background:#0d1b3e;color:#ffffff;padding:12px 20px;font-weight:600;min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center">Take the assessment</a>
+</nav>
+</div>
+</header>
+<main>
+<article class="post">
+<p class="eyebrow"><time datetime="2026-11-14">14 November 2026</time> · Liza Tinker, Microsoft MVP</p>
+<h1>Metadata vs folders in SharePoint: what Copilot actually needs</h1>
+<p class="excerpt">Folders tell Copilot where a file is. Metadata tells it what the file is. Here is why that difference decides the quality of your Copilot answers, and the four columns to start with.</p>
+<div class="prose"><p>Open almost any SharePoint library and you&rsquo;ll find the same thing: folders inside folders inside folders. Client, then year, then project, then &ldquo;Drafts&rdquo;, then &ldquo;Old&rdquo;, then &ldquo;Old - do not use&rdquo;.</p>
+<p>Folders feel safe because they look like the file server everyone grew up with. For people, they more or less work. For Copilot, they hide most of what it needs to know.</p>
+<h2>What a folder tells Copilot (not much)</h2>
+<p>A folder path answers one question: where is this file? <code>Clients / Acme / 2024 / Contracts / Final</code> tells a person a fair amount, because a person reads the whole path and fills in the gaps.</p>
+<p>The folder says nothing about the file itself. Is it approved or a draft? Who owns it? Is it a contract or a quote? Is it still current? A person guesses from the name. Copilot has to guess too, and when there are five similar files in five similar folders, it sometimes guesses wrong.</p>
+<h2>What metadata tells Copilot (a lot)</h2>
+<p>Metadata is information about a document, stored in columns next to it. Instead of burying a file in <code>Contracts / 2024 / Final</code>, you store it once and describe it:</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Document Type</td>
+<td>Contract</td>
+</tr>
+<tr>
+<td>Document Status</td>
+<td>Approved</td>
+</tr>
+<tr>
+<td>Department</td>
+<td>Legal</td>
+</tr>
+<tr>
+<td>Document Owner</td>
+<td>Priya Shah</td>
+</tr>
+</tbody>
+</table>
+<p>Now the question &ldquo;what&rsquo;s our current approved contract with Acme?&rdquo; has an answer that doesn&rsquo;t depend on anyone&rsquo;s folder habits.</p>
+<p>Microsoft&rsquo;s guidance on optimising SharePoint for Copilot says it directly: <a href="https://learn.microsoft.com/microsoft-365/copilot/employee-self-service/optimization-sharepoint">simple information architecture, clear document structure, detailed metadata and well-governed access translate into higher quality, citation-backed answers</a>. The same guidance notes that managed metadata allows more granular search and filtering, which matters more as your environment grows.</p>
+<h2>The four columns to start with</h2>
+<p>You don&rsquo;t need fifty columns. Most organisations get most of the benefit from four, applied consistently across every library:</p>
+<ol>
+<li><strong>Document Type</strong>: what kind of thing it is. Policy, Procedure, Contract, Template, Report, Minutes.</li>
+<li><strong>Document Status</strong>: where it is in its life. Draft, In Review, Approved, Superseded.</li>
+<li><strong>Department</strong>: which part of the organisation it belongs to.</li>
+<li><strong>Document Owner</strong>: the person responsible for keeping it right.</li>
+</ol>
+<p>Document Status is the one that changes Copilot&rsquo;s answers most. If only one version of a policy is marked Approved, there&rsquo;s no longer a contest between &ldquo;v2&rdquo;, &ldquo;FINAL&rdquo; and &ldquo;FINAL_revised&rdquo;.</p>
+<h2>Use the term store so the values match</h2>
+<p>Columns only help if everyone uses the same values. If one library says &ldquo;HR&rdquo;, another says &ldquo;Human Resources&rdquo; and a third says &ldquo;People and Culture&rdquo;, you have three departments as far as search is concerned.</p>
+<p>The term store fixes this. It&rsquo;s a central list of approved terms, managed in the SharePoint admin center under <strong>Content services</strong>, then <strong>Term store</strong>. You define your departments and document types once, and every site uses the same list. Change a term in one place and it changes everywhere.</p>
+<p>It takes an hour or two to set up and it&rsquo;s the difference between metadata that works and metadata that slowly drifts.</p>
+<h2>&ldquo;But nobody will fill in the columns&rdquo;</h2>
+<p>This is the objection I hear in every workshop, and it&rsquo;s fair. People won&rsquo;t tag every file by hand, and you shouldn&rsquo;t ask them to. Three things make metadata close to automatic:</p>
+<ul>
+<li><strong>Default values.</strong> A library for approved policies can set Document Type to Policy for everything saved there. Nobody types anything.</li>
+<li><strong>Folder defaults.</strong> You can set column defaults per folder, so a file dropped into a folder picks up its values automatically. People keep the drag-and-drop habit they like, and the metadata fills itself in.</li>
+<li><strong>Document sets and content types.</strong> Group related documents so they share the same properties, set once for the whole set.</li>
+</ul>
+<p>Set up this way, people save files the way they always have, and the documents come out described.</p>
+<h2>So are folders bad?</h2>
+<p>No. A shallow folder structure is fine, and for some teams it&rsquo;s the right choice. The rule I use:</p>
+<ul>
+<li><strong>Two or three levels deep at most.</strong> Past that, the path is doing a job metadata should do.</li>
+<li><strong>One type of content per library.</strong> A library for contracts and another for policies beats one library for everything.</li>
+<li><strong>Folders for grouping, metadata for describing.</strong> Use a folder to keep a project&rsquo;s files together. Use columns to say what each file is and whether it&rsquo;s current.</li>
+</ul>
+<p>The aim is to stop using folders as the only source of meaning. Deleting them all was never the point.</p>
+<h2>How to make the change without a big project</h2>
+<ol>
+<li><strong>Pick one library that matters.</strong> Policies and procedures is the usual winner, because it&rsquo;s where wrong answers do the most damage.</li>
+<li><strong>Add the four columns</strong> using terms from the term store.</li>
+<li><strong>Set defaults</strong> on the library and its folders so existing habits keep working.</li>
+<li><strong>Mark what&rsquo;s current.</strong> Set Document Status to Approved on the live versions and Superseded on the rest.</li>
+<li><strong>Create two views:</strong> one showing only Approved documents, one grouped by Document Type.</li>
+<li><strong>Test it.</strong> Ask Copilot, or Microsoft Search, the questions your staff ask. Compare the answers with what you got before.</li>
+</ol>
+<p>When one library works, the pattern is easy to repeat.</p>
+<h2>The bigger picture</h2>
+<p>Metadata is one part of information architecture, alongside how your sites are organised and who can see what. If you want the security side, I&rsquo;ve written about <a href="/blog/copilot-oversharing-sharepoint/">finding and fixing oversharing</a>, and the <a href="/blog/sharepoint-copilot-readiness-checklist/">10-point readiness checklist</a> pulls it all together.</p>
+<p>Copilot can only be as clear as the information you give it. Describe your documents well and it has something solid to work with. There is no AI without IA.</p></div>
+<aside class="cta">
+<p class="eyebrow">WHERE DOES YOUR ORGANISATION STAND?</p>
+<p class="cta-title">Take the free AI Ready Assessment</p>
+<p>30 questions, about 12 minutes. Your score, your biggest risks, five quick wins and the right next step.</p>
+<p><a class="btn" href="/assessment/">Start the assessment</a> <a class="btn ghost" href="/newsletter/">Or get the weekly newsletter</a></p>
+</aside>
+<aside class="newsletter-box"><p class="eyebrow">THE SHAREPOINT EDIT</p><p class="cta-title">Get one practical fix every week</p>
+<script async data-uid="f8a3a7b1d4" src="https://simply-sharepoint.kit.com/f8a3a7b1d4/index.js"></script></aside>
+</article>
+</main>
+<footer style="background:#ffffff;border-top:1px solid #d9dce3">
+<div style="max-width:1200px;margin:0 auto;padding:28px 24px;display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center;font-size:14px;color:#41515a">
+<span>SharePoint, simply sorted. · © 2026 Liza Tinker</span>
+<span><a href="/assessment/">Assessment</a> · <a href="/newsletter/">Newsletter</a> · <a href="/blog/">Blog</a> · All prices AUD, ex GST</span>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en-AU"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Copilot oversharing in SharePoint: how to find it and fix it · Simply AI Ready</title>
+<meta name="description" content="Copilot doesn&#x27;t break your SharePoint permissions, it reveals them. Here is what oversharing means, the four places it hides, how to find it and the order to fix it in.">
+<link rel="canonical" href="https://simplyaiready.com/blog/copilot-oversharing-sharepoint/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:title" content="Copilot oversharing in SharePoint: how to find it and fix it · Simply AI Ready"><meta property="og:description" content="Copilot doesn&#x27;t break your SharePoint permissions, it reveals them. Here is what oversharing means, the four places it hides, how to find it and the order to fix it in.">
+<meta property="og:url" content="https://simplyaiready.com/blog/copilot-oversharing-sharepoint/"><meta property="og:type" content="article"><meta property="og:site_name" content="Simply AI Ready">
+<link rel="stylesheet" href="/static/style.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Copilot oversharing in SharePoint: how to find it and fix it", "description": "Copilot doesn't break your SharePoint permissions, it reveals them. Here is what oversharing means, the four places it hides, how to find it and the order to fix it in.", "datePublished": "2026-11-14", "author": {"@type": "Person", "name": "Liza Tinker"}, "publisher": {"@type": "Organization", "name": "Simply AI Ready"}, "mainEntityOfPage": "https://simplyaiready.com/blog/copilot-oversharing-sharepoint/", "keywords": "Copilot oversharing, SharePoint oversharing, Copilot SharePoint permissions, Everyone except external users, data access governance reports, Restricted Content Discovery"}</script>
+</head><body>
+<header style="background:#ffffff;border-bottom:4px solid #ff0876">
+<div style="max-width:1200px;margin:0 auto;padding:20px 24px;display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between">
+<a href="/" style="text-decoration:none;display:flex;flex-direction:column;gap:2px">
+<span style="font-family:'Oswald','Arial Narrow',sans-serif;font-weight:500;font-size:26px;letter-spacing:1px;color:#0d1b3e">SIMPLY AI READY</span>
+<span style="font-size:12px;color:#41515a">with Liza Tinker, Microsoft MVP</span>
+</a>
+<nav aria-label="Main" style="display:flex;flex-wrap:wrap;gap:8px 28px;align-items:center;font-size:15px">
+<a href="/#how" style="text-decoration:none">How it works</a>
+<a href="/packages/" style="text-decoration:none">Packages</a>
+<a href="/blog/" style="text-decoration:none">Blog</a>
+<a href="/newsletter/" style="text-decoration:none">Newsletter</a>
+<a href="/assessment/" style="text-decoration:none;background:#0d1b3e;color:#ffffff;padding:12px 20px;font-weight:600;min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center">Take the assessment</a>
+</nav>
+</div>
+</header>
+<main>
+<article class="post">
+<p class="eyebrow"><time datetime="2026-11-14">14 November 2026</time> · Liza Tinker, Microsoft MVP</p>
+<h1>Copilot oversharing in SharePoint: how to find it and fix it</h1>
+<p class="excerpt">Copilot doesn&#x27;t break your SharePoint permissions, it reveals them. Here is what oversharing means, the four places it hides, how to find it and the order to fix it in.</p>
+<div class="prose"><p>&ldquo;Could Copilot show someone a document they shouldn&rsquo;t see?&rdquo;</p>
+<p>It&rsquo;s the first question leaders ask me, and the answer has two halves. No, Copilot can&rsquo;t open anything a person doesn&rsquo;t already have access to. And yes, it can absolutely show them something you never meant them to see, because they had access all along and nobody knew.</p>
+<p>That gap between what people can open and what you meant them to open has a name: oversharing. Here&rsquo;s how to find it and fix it.</p>
+<h2>What oversharing actually is</h2>
+<p>Oversharing is content that more people can open than need to. Nobody did it on purpose. It builds up from years of small, reasonable decisions: a quick share to get something done, a site created with the default settings, a folder opened up for a project that finished long ago.</p>
+<p>Before Copilot, oversharing was mostly harmless because people only found what they went looking for. Microsoft states that Copilot <a href="https://learn.microsoft.com/en-us/sharepoint/sharepoint-copilot-best-practices">only surfaces data a user has at least view permission to</a>. The trouble is that Copilot searches everything that user can reach, for every question. A salary spreadsheet in an overshared folder used to be safe through obscurity. Now it&rsquo;s one question away.</p>
+<h2>The four places oversharing hides</h2>
+<h3>1. &ldquo;Everyone except external users&rdquo;</h3>
+<p>This is a built-in group that contains every person in your organisation. When it&rsquo;s added to a site, a library or a single file, that content is open to all staff. It&rsquo;s the most common cause of oversharing I find, and it&rsquo;s often added by someone who just wanted a colleague to be able to open a file.</p>
+<h3>2. Sharing links</h3>
+<p>Every time someone clicks <strong>Share</strong>, they create a link. &ldquo;Anyone with the link&rdquo; works for people outside your organisation. &ldquo;People in your organisation&rdquo; works for every staff member who gets hold of it. These links don&rsquo;t expire unless you set them to, and they outlive the reason they were created.</p>
+<h3>3. Public teams and sites</h3>
+<p>A team in Microsoft Teams set to <strong>Public</strong> can be joined by anyone in the organisation, and its files are open to all of them. Many teams were created public simply because that was the option on screen.</p>
+<h3>4. Broken inheritance</h3>
+<p>SharePoint lets you give a single folder or file different permissions from the site it lives in. Each one is an exception somebody has to remember. After a few years there are hundreds, and nobody can say who has access to what without checking each one.</p>
+<h2>How to find it</h2>
+<h3>If you have Copilot licences</h3>
+<p>Once at least one Copilot licence is assigned, your SharePoint admins get SharePoint Advanced Management. Its <a href="https://learn.microsoft.com/en-us/sharepoint/data-access-governance-reports">data access governance reports</a> are built for exactly this job. In the SharePoint admin center, go to <strong>Reports</strong>, then <strong>Data access governance</strong>. Three reports matter most:</p>
+<ul>
+<li><strong>Site permissions across your organisation</strong> shows which sites the most people can reach.</li>
+<li><strong>Sharing links</strong> shows where the most &ldquo;Anyone&rdquo; and &ldquo;People in your organisation&rdquo; links were created recently.</li>
+<li><strong>Shared with Everyone except external users</strong> shows where content has been opened to all staff.</li>
+</ul>
+<p>Start with the site permissions report. It gives you a ranked list, so you can deal with the ten riskiest sites first instead of auditing hundreds.</p>
+<h3>If you don&rsquo;t have Copilot licences yet</h3>
+<p>You can still learn a lot from what&rsquo;s included with Microsoft 365:</p>
+<ol>
+<li>In the SharePoint admin center, open <strong>Sites</strong>, then <strong>Active sites</strong>. Add the <strong>External sharing</strong> and <strong>Teams</strong> columns and export the list.</li>
+<li>Open your most sensitive sites one at a time. Go to <strong>Settings</strong>, then <strong>Site permissions</strong>, and look for &ldquo;Everyone except external users&rdquo;.</li>
+<li>In the Teams admin center, list your teams and filter by privacy to find the public ones.</li>
+<li>In the Microsoft Entra admin center, filter users by <strong>User type: Guest</strong> to see every external person with an account.</li>
+</ol>
+<p>It&rsquo;s slower, but for a small or mid-sized organisation it&rsquo;s a perfectly good first pass.</p>
+<h2>The order to fix it in</h2>
+<p>Don&rsquo;t try to fix everything. Fix it in this order.</p>
+<p><strong>1. Stop it getting worse.</strong> Change the default sharing link to <strong>Specific people</strong> in the SharePoint admin center under <strong>Policies</strong>, then <strong>Sharing</strong>. From that moment, new shares go only to the people named.</p>
+<p><strong>2. Protect the crown jewels.</strong> List the content that would really hurt if the wrong person saw it: HR, payroll, board, legal, anything about individual clients or members. Check the permissions on those sites by hand and remove &ldquo;Everyone except external users&rdquo; wherever it appears.</p>
+<p><strong>3. Buy time on risky sites.</strong> If a sensitive site needs more work than you can do this week, <a href="https://learn.microsoft.com/en-us/sharepoint/restricted-content-discovery">Restricted Content Discovery</a> keeps it out of Copilot and organisation-wide search without changing who can open it. It&rsquo;s a holding measure, not a fix. Note that the older Restricted SharePoint Search feature is being retired, so plan around Restricted Content Discovery instead.</p>
+<p><strong>4. Clean up links and guests.</strong> Remove &ldquo;Anyone&rdquo; links that are no longer needed and guests who haven&rsquo;t signed in for 90 days.</p>
+<p><strong>5. Make public teams private</strong> unless there&rsquo;s a reason for the whole organisation to see them.</p>
+<h2>Why it keeps coming back</h2>
+<p>Here&rsquo;s what the reports won&rsquo;t tell you. Oversharing is a symptom. People overshare when they can&rsquo;t work out where something belongs or who should see it. If your sites are organised by whoever happened to create them, with one giant library for everything, then sharing file by file is the only way to get work done.</p>
+<p>Fix the structure and most oversharing stops at the source. When each team has one clear home, and each site has an owner and a defined audience, access is decided once at the site level and people stop inventing workarounds. My <a href="/blog/sharepoint-copilot-readiness-checklist/">10-point readiness checklist</a> covers the structural checks alongside the security ones.</p>
+<p>That is why I treat oversharing as an information architecture problem as much as a security one. Tidy permissions on a messy structure don&rsquo;t stay tidy.</p></div>
+<aside class="cta">
+<p class="eyebrow">WHERE DOES YOUR ORGANISATION STAND?</p>
+<p class="cta-title">Take the free AI Ready Assessment</p>
+<p>30 questions, about 12 minutes. Your score, your biggest risks, five quick wins and the right next step.</p>
+<p><a class="btn" href="/assessment/">Start the assessment</a> <a class="btn ghost" href="/newsletter/">Or get the weekly newsletter</a></p>
+</aside>
+<aside class="newsletter-box"><p class="eyebrow">THE SHAREPOINT EDIT</p><p class="cta-title">Get one practical fix every week</p>
+<script async data-uid="f8a3a7b1d4" src="https://simply-sharepoint.kit.com/f8a3a7b1d4/index.js"></script></aside>
+</article>
+</main>
+<footer style="background:#ffffff;border-top:1px solid #d9dce3">
+<div style="max-width:1200px;margin:0 auto;padding:28px 24px;display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center;font-size:14px;color:#41515a">
+<span>SharePoint, simply sorted. · © 2026 Liza Tinker</span>
+<span><a href="/assessment/">Assessment</a> · <a href="/newsletter/">Newsletter</a> · <a href="/blog/">Blog</a> · All prices AUD, ex GST</span>
+</div>
+</footer>
+</body></html>
