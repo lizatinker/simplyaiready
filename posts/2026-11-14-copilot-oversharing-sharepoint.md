@@ -1,7 +1,7 @@
 ---
 title: Copilot oversharing in SharePoint: how to find it and fix it
 date: 2026-11-14
-excerpt: Copilot doesn't break your SharePoint permissions, it reveals them. Here is what oversharing means, the four places it hides, how to find it and the order to fix it in.
+excerpt: Copilot doesn't break your SharePoint permissions, it reveals them. What oversharing is, the four places it hides, and the order to fix it in.
 keywords: Copilot oversharing, SharePoint oversharing, Copilot SharePoint permissions, Everyone except external users, data access governance reports, Restricted Content Discovery
 ---
 

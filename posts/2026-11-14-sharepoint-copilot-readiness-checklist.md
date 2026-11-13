@@ -1,7 +1,7 @@
 ---
 title: Is your SharePoint ready for Copilot? 10 checks to run before you switch it on
 date: 2026-11-14
-excerpt: A plain-English SharePoint Copilot readiness checklist. Ten checks you can run this week to see what Copilot will find, what it shouldn't, and what to fix first.
+excerpt: A plain-English SharePoint Copilot readiness checklist: ten checks to see what Copilot will find, what it shouldn't, and what to fix first.
 keywords: SharePoint Copilot readiness, Copilot readiness checklist, is SharePoint ready for Copilot, Microsoft 365 Copilot preparation, Copilot SharePoint best practices
 ---
 

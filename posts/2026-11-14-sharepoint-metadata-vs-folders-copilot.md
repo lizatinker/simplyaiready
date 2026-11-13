@@ -1,7 +1,7 @@
 ---
 title: Metadata vs folders in SharePoint: what Copilot actually needs
 date: 2026-11-14
-excerpt: Folders tell Copilot where a file is. Metadata tells it what the file is. Here is why that difference decides the quality of your Copilot answers, and the four columns to start with.
+excerpt: Folders tell Copilot where a file is. Metadata tells it what the file is. Why that decides your Copilot answers, and the four columns to start with.
 keywords: SharePoint metadata vs folders, SharePoint metadata Copilot, SharePoint information architecture, SharePoint columns best practice, term store, there is no AI without IA
 ---
 

@@ -17,9 +17,11 @@ SITE = {
     "name": "Simply AI Ready",
     "url": "https://simplyaiready.com",
     "author": "Liza Tinker",
-    "description": "Copilot readiness for SharePoint, Teams and OneDrive. Find out what Copilot will see, fix what it shouldn't, and get a blueprint anyone can build. By Liza Tinker, Microsoft MVP.",
+    "description": "Get SharePoint, Teams and OneDrive ready for Microsoft 365 Copilot. Take the free AI Ready Assessment from Liza Tinker, Microsoft MVP.",
 }
 ASSESSMENT_URL = "/assessment/"
+OG_IMAGE = "/images/simply-ai-ready-share.png"   # 1200 x 630 social share image
+GOOGLE_VERIFICATION = ""   # paste the content value from Google Search Console's HTML tag here
 ROOT = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(ROOT, "docs")
 DRAFTS = "--drafts" in sys.argv
@@ -28,8 +30,8 @@ CUSTOM_DOMAIN_LIVE = True  # keeps docs/CNAME so GitHub Pages serves simplyairea
 PAGES = {
     # file in pages/: (output path, title, description)
     "index.html": ("", "", SITE["description"]),
-    "assessment.html": ("assessment/", "Free AI Ready Assessment", "30 questions, about 12 minutes. Get your Copilot readiness score for SharePoint, Teams and OneDrive, your biggest risks, five quick wins and the right next step."),
-    "packages.html": ("packages/", "Packages and pricing", "Start with the $890 AI Ready Quick Check, then a Discovery and information architecture for SharePoint, Teams and OneDrive, plus build and support options."),
+    "assessment.html": ("assessment/", "Free Copilot Readiness Assessment", "Free Copilot readiness assessment for SharePoint, Teams and OneDrive. 30 questions, 12 minutes. Get your score, biggest risks and five quick wins."),
+    "packages.html": ("packages/", "Copilot Readiness Packages and Pricing", "Copilot readiness consulting for SharePoint, Teams and OneDrive. Start with the $890 AI Ready Quick Check, then go as far as you need."),
     "newsletter.html": ("newsletter/", "The SharePoint Edit – weekly newsletter", "One email a week from Liza Tinker, Microsoft MVP: what changed in SharePoint, Teams, OneDrive and Copilot, and one thing worth fixing."),
 }
 
@@ -73,8 +75,10 @@ PRIVATE_PAGES = {
 
 
 def page(title, body, path, desc, og_type="website", extra_head="", robots="index, follow, max-image-preview:large"):
-    t = esc(f"{title} · {SITE['name']}" if title else f"{SITE['name']} · Copilot readiness for SharePoint, Teams and OneDrive")
+    t = esc(f"{title} · {SITE['name']}" if title else f"Copilot Readiness for SharePoint, Teams and OneDrive · {SITE['name']}")
     url = f"{SITE['url']}/{path}"
+    img = SITE["url"] + OG_IMAGE
+    verify = f'<meta name="google-site-verification" content="{GOOGLE_VERIFICATION}">' if GOOGLE_VERIFICATION else ""
     return f"""<!DOCTYPE html>
 <html lang="en-AU"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -84,6 +88,11 @@ def page(title, body, path, desc, og_type="website", extra_head="", robots="inde
 <meta name="robots" content="{robots}">
 <meta property="og:title" content="{t}"><meta property="og:description" content="{esc(desc)}">
 <meta property="og:url" content="{url}"><meta property="og:type" content="{og_type}"><meta property="og:site_name" content="{SITE['name']}">
+<meta property="og:image" content="{img}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:locale" content="en_AU">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{t}"><meta name="twitter:description" content="{esc(desc)}"><meta name="twitter:image" content="{img}">
+<meta name="author" content="{SITE['author']}"><meta name="theme-color" content="#0d1b3e">
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+{verify}
 <link rel="stylesheet" href="/static/style.css">
 {extra_head}
 </head><body>
@@ -127,13 +136,53 @@ CTA = """<aside class="cta">
 </aside>"""
 
 
+def site_ld():
+    import json
+    person = {"@type": "Person", "@id": SITE["url"] + "/#liza", "name": "Liza Tinker", "jobTitle": "Microsoft MVP, SharePoint and Microsoft 365 consultant",
+              "image": SITE["url"] + "/images/liza-tinker.jpg", "url": SITE["url"] + "/#about",
+              "knowsAbout": ["Microsoft SharePoint", "Microsoft 365 Copilot", "Information architecture", "Microsoft Teams", "OneDrive"]}
+    org = {"@type": "ProfessionalService", "@id": SITE["url"] + "/#org", "name": SITE["name"], "url": SITE["url"] + "/",
+           "description": SITE["description"], "image": SITE["url"] + OG_IMAGE, "founder": {"@id": SITE["url"] + "/#liza"},
+           "areaServed": "AU", "address": {"@type": "PostalAddress", "addressLocality": "Sydney", "addressRegion": "NSW", "addressCountry": "AU"}}
+    web = {"@type": "WebSite", "@id": SITE["url"] + "/#website", "url": SITE["url"] + "/", "name": SITE["name"], "inLanguage": "en-AU", "publisher": {"@id": SITE["url"] + "/#org"}}
+    return '<script type="application/ld+json">' + json.dumps({"@context": "https://schema.org", "@graph": [org, person, web]}) + "</script>"
+
+
+def packages_ld():
+    import json
+    svc = {"@context": "https://schema.org", "@type": "Service", "name": "AI Ready Quick Check", "serviceType": "Microsoft 365 Copilot readiness review",
+           "provider": {"@id": SITE["url"] + "/#org"}, "areaServed": "AU",
+           "description": "Know where you stand, exactly what needs to change and how to get there: a findings report, a high-level SharePoint architecture, a best practices report, a roadmap and a 60-minute call.",
+           "offers": {"@type": "Offer", "price": "890", "priceCurrency": "AUD", "url": SITE["url"] + "/packages/"}}
+    return '<script type="application/ld+json">' + json.dumps(svc) + "</script>"
+
+
+def latest_posts_html(posts, n=3):
+    if not posts:
+        return ""
+    cards = "".join(f'''<a href="/blog/{p['slug']}/" style="display:flex;flex-direction:column;gap:10px;background:#ffffff;border:1px solid #d9dce3;border-top:4px solid #0a8086;padding:28px;text-decoration:none;color:#0d1b3e">
+<span style="font-family:'DM Serif Display',Georgia,serif;font-size:24px;line-height:1.2">{esc(p.get('title'))}</span>
+<span style="font-size:15px;line-height:1.6;color:#41515a">{esc(p.get('excerpt'))}</span>
+<span style="margin-top:auto;font-weight:600;color:#0a8086">Read the guide</span></a>''' for p in posts[:n])
+    return f'''<section id="guides" style="max-width:1200px;margin:0 auto;padding:96px 24px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px;max-width:820px">
+<p style="margin:0;font-family:'Oswald','Arial Narrow',sans-serif;font-weight:500;font-size:15px;letter-spacing:2px;color:#0a8086">FREE GUIDES</p>
+<h2 style="margin:0;font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:clamp(34px,4vw,52px);line-height:1.1">Start getting Copilot ready today.</h2>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px">{cards}</div>
+<p style="margin:0"><a href="/blog/">See all guides</a></p>
+</section>'''
+
+
 def post_page(p):
     import json
     ld = json.dumps({
         "@context": "https://schema.org", "@type": "BlogPosting",
         "headline": p.get("title", ""), "description": p.get("excerpt", ""),
-        "datePublished": p["date"].isoformat(), "author": {"@type": "Person", "name": SITE["author"]},
-        "publisher": {"@type": "Organization", "name": SITE["name"]},
+        "datePublished": p["date"].isoformat(), "dateModified": p["date"].isoformat(),
+        "author": {"@type": "Person", "name": SITE["author"], "url": SITE["url"] + "/#about", "jobTitle": "Microsoft MVP"},
+        "publisher": {"@type": "Organization", "name": SITE["name"], "url": SITE["url"] + "/"},
+        "image": SITE["url"] + OG_IMAGE, "inLanguage": "en-AU",
         "mainEntityOfPage": f"{SITE['url']}/blog/{p['slug']}/",
         "keywords": p.get("keywords", ""),
     })
@@ -174,14 +223,16 @@ def main():
     if os.path.isdir(os.path.join(ROOT, "images")):
         shutil.copytree(os.path.join(ROOT, "images"), os.path.join(OUT, "images"))
     urls = []
+    posts = load_posts()
     for fn, (path, title, desc) in PAGES.items():
         body = open(os.path.join(ROOT, "pages", fn), encoding="utf-8").read()
-        write(path + "index.html", page(title, body, path, desc))
+        body = body.replace("<!--LATEST_POSTS-->", latest_posts_html(posts))
+        extra = site_ld() if fn == "index.html" else packages_ld() if fn == "packages.html" else ""
+        write(path + "index.html", page(title, body, path, desc, extra_head=extra))
         urls.append(path)
     for fn, (path, title, desc) in PRIVATE_PAGES.items():
         body = open(os.path.join(ROOT, "pages", fn), encoding="utf-8").read()
         write(path + "index.html", page(title, body, path, desc, robots="noindex, nofollow"))
-    posts = load_posts()
     for p in posts:
         write(f"blog/{p['slug']}/index.html", post_page(p))
         urls.append(f"blog/{p['slug']}/")
