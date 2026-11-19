@@ -63,6 +63,8 @@ export default {
 
 export async function handle(payload, env) {
   const fields = (payload && payload.data && payload.data.fields) || [];
+  const formName = ((payload && payload.data && payload.data.formName) || "").toLowerCase();
+  if (formName.startsWith("sharepoint ready scorecard")) return handleScorecard(fields, env);
   const find = (label) =>
     fields.find((f) => (f.label || "").trim().toLowerCase() === label.toLowerCase());
   const text = (label) => {
@@ -123,6 +125,61 @@ export async function handle(payload, env) {
     throw new Error("The tag 'assessment-taken' does not exist in Kit");
   }
   return { ok: true, email, firstName, consent, applied, missing };
+}
+
+// The 2-minute SharePoint Ready Scorecard (the small free quiz).
+// Adds the person to Kit with scorecard fields and tags. It never adds assessment-taken,
+// so the big assessment emails don't start. Tags (create them in Kit first):
+//   marketing-ok (only if the box was ticked), scorecard-org or scorecard-me, then scorecard-taken last.
+async function handleScorecard(fields, env) {
+  const find = (label) =>
+    fields.find((f) => (f.label || "").trim().toLowerCase() === label.toLowerCase());
+  const text = (label) => {
+    const f = find(label);
+    return f ? displayValue(f) : "";
+  };
+  const email = text("Email").trim();
+  if (!email) return { skipped: "no email in scorecard submission" };
+  const firstName = text("First name").trim().split(/\s+/)[0] || "";
+  const forWhom = text("Who is this for?").toLowerCase();
+  const isOrg = forWhom.includes("organisation");
+  const consent = fields.some(
+    (f) => (f.label || "").trim().toLowerCase().startsWith("staying in touch") && isTicked(f.value)
+  );
+  const subscriber = {
+    email_address: email,
+    first_name: firstName,
+    state: "active",
+    fields: {
+      scorecard_score: text("score"),
+      scorecard_result: text("band"),
+      scorecard_for: isOrg ? "Organisation" : "Just me",
+    },
+  };
+  try {
+    await kit(env, "/subscribers", "POST", subscriber);
+  } catch (err) {
+    // If the custom fields don't exist in Kit yet, still save the person.
+    delete subscriber.fields;
+    await kit(env, "/subscribers", "POST", subscriber);
+  }
+  const tags = [];
+  if (consent) tags.push("marketing-ok");
+  tags.push(isOrg ? "scorecard-org" : "scorecard-me");
+  tags.push("scorecard-taken"); // last: this one starts the Kit automation
+  const tagIds = await loadTagIds(env);
+  const applied = [];
+  const missing = [];
+  for (const name of tags) {
+    const id = tagIds[name.toLowerCase()];
+    if (!id) { missing.push(name); continue; }
+    await kit(env, `/tags/${id}/subscribers`, "POST", { email_address: email });
+    applied.push(name);
+  }
+  if (missing.includes("scorecard-taken")) {
+    throw new Error("The tag 'scorecard-taken' does not exist in Kit");
+  }
+  return { ok: true, form: "scorecard", email, firstName, consent, isOrg, applied, missing };
 }
 
 function displayValue(f) {

@@ -4,3 +4,5 @@
 
 Secrets on the Worker: `KIT_API_KEY` (Kit v4 API key) and `TALLY_SIGNING_SECRET` (the same value set on the Tally webhook).
 To update: paste the new `worker.js` into the Worker's code editor in Cloudflare and click Deploy.
+
+The same Worker also handles the 2-minute **SharePoint Ready Scorecard** (Tally form X5odvL). It spots the form by its name, saves `scorecard_score`, `scorecard_result` and `scorecard_for`, and adds `marketing-ok` (if ticked), `scorecard-org` or `scorecard-me`, then `scorecard-taken`. It never adds `assessment-taken`. Point that form's webhook at the same Worker URL with the same signing secret.
