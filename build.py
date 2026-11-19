@@ -242,7 +242,7 @@ def main():
     today = datetime.date.today().isoformat()
     write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
           "".join(f"<url><loc>{SITE['url']}/{u}</loc><lastmod>{today}</lastmod></url>\n" for u in urls) + "</urlset>\n")
-    write("robots.txt", f"User-agent: *\nAllow: /\nSitemap: {SITE['url']}/sitemap.xml\n")
+    write("robots.txt", f"User-agent: *\nAllow: /\nDisallow: /static/downloads/\nSitemap: {SITE['url']}/sitemap.xml\n")
     if CUSTOM_DOMAIN_LIVE:
         write("CNAME", "simplyaiready.com\n")
     write(".nojekyll", "")

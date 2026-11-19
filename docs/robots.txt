@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+Disallow: /static/downloads/
 Sitemap: https://simplyaiready.com/sitemap.xml
