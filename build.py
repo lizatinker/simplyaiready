@@ -31,7 +31,6 @@ PAGES = {
     # file in pages/: (output path, title, description)
     "index.html": ("", "", SITE["description"]),
     "assessment.html": ("assessment/", "Free Copilot Readiness Assessment", "Free Copilot readiness assessment for SharePoint, Teams and OneDrive. 30 questions, 12 minutes. Get your score, biggest risks and five quick wins."),
-    "packages.html": ("packages/", "Copilot Readiness Packages and Pricing", "Copilot readiness consulting for SharePoint, Teams and OneDrive. Start with the $890 AI Ready Quick Check, then go as far as you need."),
     "newsletter.html": ("newsletter/", "The SharePoint Edit – weekly newsletter", "One email a week from Liza Tinker, Microsoft MVP: what changed in SharePoint, Teams, OneDrive and Copilot, and one thing worth fixing."),
 }
 
@@ -49,7 +48,6 @@ def header():
 </a>
 <nav aria-label="Main" style="display:flex;flex-wrap:wrap;gap:8px 28px;align-items:center;font-size:15px">
 <a href="/#how" style="text-decoration:none">How it works</a>
-<a href="/packages/" style="text-decoration:none">Packages</a>
 <a href="/blog/" style="text-decoration:none">Blog</a>
 <a href="/newsletter/" style="text-decoration:none">Newsletter</a>
 <a href="/assessment/" style="text-decoration:none;background:#0d1b3e;color:#ffffff;padding:12px 20px;font-weight:600;min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center">Take the assessment</a>
@@ -63,13 +61,15 @@ def footer():
     return f"""<footer style="background:#ffffff;border-top:1px solid #d9dce3">
 <div style="max-width:1200px;margin:0 auto;padding:28px 24px;display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center;font-size:14px;color:#41515a">
 <span>SharePoint, simply sorted. · © {year} Liza Tinker</span>
-<span><a href="/assessment/">Assessment</a> · <a href="/newsletter/">Newsletter</a> · <a href="/blog/">Blog</a> · All prices AUD, ex GST</span>
+<span><a href="/assessment/">Assessment</a> · <a href="/newsletter/">Newsletter</a> · <a href="/blog/">Blog</a></span>
 </div>
 </footer>"""
 
 
 PRIVATE_PAGES = {
     # unlisted pages: noindex, not in the sitemap
+    # packages and pricing: only reached from the assessment results and emails
+    "packages.html": ("packages/", "Packages and Pricing", "What's included in the AI Ready Quick Check, Discovery, build and support, with pricing."),
     "it-guide.html": ("quick-check/it-guide/", "Quick Check: guide for your IT person", "How to export the three Microsoft 365 reports for your AI Ready Quick Check."),
 }
 
@@ -227,7 +227,7 @@ def main():
     for fn, (path, title, desc) in PAGES.items():
         body = open(os.path.join(ROOT, "pages", fn), encoding="utf-8").read()
         body = body.replace("<!--LATEST_POSTS-->", latest_posts_html(posts))
-        extra = site_ld() if fn == "index.html" else packages_ld() if fn == "packages.html" else ""
+        extra = site_ld() if fn == "index.html" else ""
         write(path + "index.html", page(title, body, path, desc, extra_head=extra))
         urls.append(path)
     for fn, (path, title, desc) in PRIVATE_PAGES.items():
