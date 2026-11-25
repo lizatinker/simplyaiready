@@ -50,7 +50,8 @@ def header():
 <a href="/#how" style="text-decoration:none">How it works</a>
 <a href="/blog/" style="text-decoration:none">Blog</a>
 <a href="/newsletter/" style="text-decoration:none">Newsletter</a>
-<a href="/assessment/" style="text-decoration:none;background:#0d1b3e;color:#ffffff;padding:12px 20px;font-weight:600;min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center">Take the assessment</a>
+<a href="/assessment/" style="text-decoration:none">Assessment</a>
+<a href="https://simply-sharepoint.kit.com/subscribe" style="text-decoration:none;background:#0d1b3e;color:#ffffff;padding:12px 20px;font-weight:600;min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center">Get the free Scorecard</a>
 </nav>
 </div>
 </header>"""
@@ -61,7 +62,7 @@ def footer():
     return f"""<footer style="background:#ffffff;border-top:1px solid #d9dce3">
 <div style="max-width:1200px;margin:0 auto;padding:28px 24px;display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center;font-size:14px;color:#41515a">
 <span>SharePoint, simply sorted. · © {year} Liza Tinker</span>
-<span><a href="/assessment/">Assessment</a> · <a href="/newsletter/">Newsletter</a> · <a href="/blog/">Blog</a></span>
+<span><a href="/assessment/">Assessment</a> · <a href="https://simply-sharepoint.kit.com/subscribe">Free Scorecard</a> · <a href="/newsletter/">Newsletter</a> · <a href="/blog/">Blog</a></span>
 </div>
 </footer>"""
 
@@ -129,11 +130,11 @@ def load_posts():
 
 
 CTA = """<aside class="cta">
-<p class="eyebrow">WHERE DOES YOUR ORGANISATION STAND?</p>
-<p class="cta-title">Take the free AI Ready Assessment</p>
-<p>30 questions, about 12 minutes. Your score, your biggest risks, five quick wins and the right next step.</p>
-<p><a class="btn" href="/assessment/">Start the assessment</a> </p>
-<p style="font-size:15px">Look after one site or team, not the whole organisation? <a href="/newsletter/">Get The SharePoint Edit</a>: one practical fix in your inbox every week.</p>
+<p class="eyebrow">IS YOUR SHAREPOINT READY FOR COPILOT?</p>
+<p class="cta-title">Get the free SharePoint Ready Scorecard</p>
+<p>25 checks, about 10 minutes, and one quick fix per stage you can do this week. No admin access needed.</p>
+<p><a class="btn" href="https://simply-sharepoint.kit.com/subscribe">Send me the Scorecard</a> </p>
+<p style="font-size:15px">Responsible for the whole organisation? <a href="/assessment/">Take the free AI Ready Assessment</a>: 30 questions, about 12 minutes, with your score, biggest risks and next step.</p>
 </aside>"""
 
 
