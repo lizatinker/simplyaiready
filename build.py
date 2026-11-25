@@ -50,7 +50,6 @@ def header():
 <a href="/#how" style="text-decoration:none">How it works</a>
 <a href="/blog/" style="text-decoration:none">Blog</a>
 <a href="/newsletter/" style="text-decoration:none">Newsletter</a>
-<a href="https://simply-sharepoint.kit.com/subscribe" style="text-decoration:none">Free Scorecard</a>
 <a href="/assessment/" style="text-decoration:none;background:#0d1b3e;color:#ffffff;padding:12px 20px;font-weight:600;min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center">Take the assessment</a>
 </nav>
 </div>
@@ -62,7 +61,7 @@ def footer():
     return f"""<footer style="background:#ffffff;border-top:1px solid #d9dce3">
 <div style="max-width:1200px;margin:0 auto;padding:28px 24px;display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center;font-size:14px;color:#41515a">
 <span>SharePoint, simply sorted. · © {year} Liza Tinker</span>
-<span><a href="/assessment/">Assessment</a> · <a href="https://simply-sharepoint.kit.com/subscribe">Free Scorecard</a> · <a href="/newsletter/">Newsletter</a> · <a href="/blog/">Blog</a></span>
+<span><a href="/assessment/">Assessment</a> · <a href="/newsletter/">Newsletter</a> · <a href="/blog/">Blog</a></span>
 </div>
 </footer>"""
 
@@ -134,7 +133,7 @@ CTA = """<aside class="cta">
 <p class="cta-title">Take the free AI Ready Assessment</p>
 <p>30 questions, about 12 minutes. Your score, your biggest risks, five quick wins and the right next step.</p>
 <p><a class="btn" href="/assessment/">Start the assessment</a> </p>
-<p style="font-size:15px">Look after one site or team, not the whole organisation? <a href="https://simply-sharepoint.kit.com/subscribe">Get the free SharePoint Ready Scorecard</a>: 25 checks, 10 minutes, and five questions to ask Copilot.</p>
+<p style="font-size:15px">Look after one site or team, not the whole organisation? <a href="/newsletter/">Get The SharePoint Edit</a>: one practical fix in your inbox every week.</p>
 </aside>"""
 
 
@@ -194,7 +193,7 @@ def post_page(p):
 {('<p class="excerpt">' + esc(p.get('excerpt')) + '</p>') if p.get('excerpt') else ''}
 <div class="prose">{p['html']}</div>
 {CTA}
-<aside class="newsletter-box"><p class="eyebrow">THE SHAREPOINT EDIT</p><p class="cta-title">Get one practical fix every week</p><p style="font-size:15px">Want the free SharePoint Ready Scorecard too? <a href="https://simply-sharepoint.kit.com/subscribe">Get it here</a>.</p>
+<aside class="newsletter-box"><p class="eyebrow">THE SHAREPOINT EDIT</p><p class="cta-title">Get one practical fix every week</p><p style="font-size:15px">Plain English, one email a week, and you can unsubscribe at any time.</p>
 <script async data-uid="f8a3a7b1d4" src="https://simply-sharepoint.kit.com/f8a3a7b1d4/index.js"></script></aside>
 </article>"""
     return page(p.get("title", ""), body, f"blog/{p['slug']}/", p.get("excerpt") or SITE["description"], "article",
